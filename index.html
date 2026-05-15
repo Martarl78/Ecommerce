@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAISON LURÉ — Bolsos de Lujo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner container">
+
+      <nav class="nav-left">
+        <a href="#tienda">Colección</a>
+        <a href="#nosotros">Quienes somos</a>
+      </nav>
+
+      <a href="#" class="logo">MAISON LURÉ</a>
+
+      <div class="nav-right">
+        <div class="session-area" id="sessionArea">
+          <button class="btn-ghost" id="btnLogin">Registrarse</button>
+        </div>
+        <button class="cart-btn" id="cartBtn" aria-label="Ver carrito">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===== MODAL LOGIN ===== -->
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modal">
+      <button class="modal-close" id="closeLogin" aria-label="Cerrar">✕</button>
+      <p class="modal-eyebrow">Bienvenida de nuevo</p>
+      <h2 id="loginTitle">Iniciar sesión</h2>
+      <div class="form-group">
+        <label for="loginEmail">Correo electrónico</label>
+        <input type="email" id="loginEmail" placeholder="tu@email.com" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Contraseña</label>
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <p class="form-error" id="loginError"></p>
+      <button class="btn-primary full-width" id="btnDoLogin">Entrar</button>
+      <p class="modal-footer-text">¿Sin cuenta? <a href="#" id="switchToRegister">Crear una cuenta</a></p>
+    </div>
+  </div>
+
+  <!-- ===== MODAL REGISTRO ===== -->
+  <div class="modal-overlay" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="modal">
+      <button class="modal-close" id="closeRegister" aria-label="Cerrar">✕</button>
+      <p class="modal-eyebrow">Únete a nosotras</p>
+      <h2 id="registerTitle">Crear cuenta</h2>
+      <div class="form-group">
+        <label for="regName">Nombre</label>
+        <input type="text" id="regName" placeholder="Tu nombre" autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="regEmail">Correo electrónico</label>
+        <input type="email" id="regEmail" placeholder="tu@email.com" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="regPass">Contraseña</label>
+        <input type="password" id="regPass" placeholder="••••••••" autocomplete="new-password" />
+      </div>
+      <p class="form-error" id="registerError"></p>
+      <button class="btn-primary full-width" id="btnDoRegister">Crear cuenta</button>
+      <p class="modal-footer-text">¿Ya tienes cuenta? <a href="#" id="switchToLogin">Iniciar sesión</a></p>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg-text" aria-hidden="true">LURÉ</div>
+    <div class="hero-content container">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Nueva Colección — 2026</span>
+        <h1>El bolso que<br /><em>te define.</em></h1>
+        <p>Piezas artesanales de cuero italiano. Cada bolso, una historia de dedicación y elegancia sin tiempo.</p>
+        <a href="#tienda" class="btn-primary">Descubrir la colección</a>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-img">
+  <img src="Resources/ToteMilano.png" alt="Tote Milano" />
+</div>
+
+          <div class="hero-card-label">
+            <span>Tote Milano</span>
+            <span>289 €</span>
+          </div>
+        </div>
+        <div class="hero-tag-float">Cuero genuino</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BANDA VALORES ===== -->
+  <div class="values-strip">
+    <div class="container values-inner">
+      <span>✦ Cuero italiano genuino</span>
+      <span>✦ Envío gratuito +150 €</span>
+      <span>✦ Devolución 30 días</span>
+      <span>✦ Artesanía desde 1987</span>
+    </div>
+  </div>
+
+  <!-- ===== TIENDA ===== -->
+  <section class="shop-section" id="tienda">
+    <div class="container">
+      <div class="shop-header">
+        <div>
+          <span class="section-eyebrow">Nuestra selección</span>
+          <h2>La Colección</h2>
+        </div>
+        <p id="productCount" class="product-count"></p>
+      </div>
+
+      <!-- Controles -->
+      <div class="shop-controls">
+        <div class="filter-group">
+          <div class="filter-buttons" id="filterButtons" role="group" aria-label="Filtrar por categoría">
+            <button class="filter-btn active" data-category="todas">Todas</button>
+            <button class="filter-btn" data-category="tote">Tote</button>
+            <button class="filter-btn" data-category="clutch">Clutch</button>
+            <button class="filter-btn" data-category="bandolera">Bandolera</button>
+            <button class="filter-btn" data-category="mochila">Mochila</button>
+          </div>
+        </div>
+        <div class="sort-group">
+          <select id="sortSelect" class="sort-select" aria-label="Ordenar por precio">
+            <option value="default">Ordenar por</option>
+            <option value="asc">Precio: menor a mayor</option>
+            <option value="desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Grid productos -->
+      <div class="products-grid" id="productsGrid" role="list"></div>
+      <div class="no-results" id="noResults" style="display:none">
+        <p>No hay productos en esta categoría.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BANNER EDITORIAL ===== -->
+  <section class="editorial-banner" id="nosotros">
+    <div class="container editorial-inner">
+      <div class="editorial-text">
+        <span class="section-eyebrow">Nuestro taller</span>
+        <h2>Hecho a mano,<br /><em>con propósito</em></h2>
+        <p>Cada pieza de Maison Luré nace en nuestro taller de Florencia. Seleccionamos los mejores cueros, los trabajamos durante días y entregamos algo que dura toda una vida.</p>
+        <a href="#tienda" class="btn-secondary">Ver la colección</a>
+      </div>
+      <div class="editorial-visual" aria-hidden="true">
+        <div class="editorial-badge">
+          <span>Desde</span>
+          <strong>1987</strong>
+          <span>Florencia</span>
+        </div>
+        <div class="big-icon">👝</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANEL CARRITO ===== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel" role="complementary" aria-label="Carrito de compra">
+    <div class="cart-panel-header">
+      <h3>Tu selección</h3>
+      <button class="btn-ghost" id="closeCart" aria-label="Cerrar carrito">✕ Cerrar</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-empty" id="cartEmpty">
+      <span aria-hidden="true">👜</span>
+      <p>Tu carrito está vacío</p>
+    </div>
+
+    <div class="cart-summary" id="cartSummary" style="display:none">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotal">0,00 €</strong>
+      </div>
+      <div class="summary-row">
+        <span>Envío</span>
+        <strong id="shippingCost">—</strong>
+      </div>
+      <p class="shipping-info" id="shippingInfo"></p>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <strong id="totalFinal">0,00 €</strong>
+      </div>
+      <button class="btn-primary full-width" id="btnCheckout">Finalizar compra</button>
+    </div>
+  </aside>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo footer-logo">MAISON LURÉ</span>
+        <p>Artesanía italiana desde 1987.<br />Florencia · Madrid · París</p>
+      </div>
+      <div class="footer-links">
+        <h4>Tienda</h4>
+        <a href="#tienda">Nueva colección</a>
+        <a href="#tienda">Tote bags</a>
+        <a href="#tienda">Clutches</a>
+        <a href="#tienda">Bandoleras</a>
+      </div>
+      <div class="footer-links">
+        <h4>Ayuda</h4>
+        <a href="#">Envíos y devoluciones</a>
+        <a href="#">Guía de tallas</a>
+        <a href="#">Cuidado del cuero</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <h4>Maison Luré</h4>
+        <a href="#nosotros">Nuestro atelier</a>
+        <a href="#">Sostenibilidad</a>
+        <a href="#">Prensa</a>
+        <a href="#">Trabaja con nosotros</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Maison Luré. Todos los derechos reservados.</p>
+      <p>Política de privacidad · Cookies · Aviso legal</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
